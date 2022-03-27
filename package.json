@@ -10,14 +10,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/vilma-heikkila/fullstack.git"
+    "url": "git+https://github.com/vilma-heikkila/fullstack-puhelinluettelo.git"
   },
   "author": "Vilma Heikkilä",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/vilma-heikkila/fullstack/issues"
+    "url": "https://github.com/vilma-heikkila/fullstack-puhelinluettelo/issues"
   },
-  "homepage": "https://github.com/vilma-heikkila/fullstack#readme",
+  "homepage": "https://github.com/vilma-heikkila/fullstack-puhelinluettelo#readme",
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^4.17.3",
