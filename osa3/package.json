@@ -1,0 +1,29 @@
+{
+  "name": "puhelinluettelobackend",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon index.js",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vilma-heikkila/fullstack.git"
+  },
+  "author": "Vilma Heikkilä",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vilma-heikkila/fullstack/issues"
+  },
+  "homepage": "https://github.com/vilma-heikkila/fullstack#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.3",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}
