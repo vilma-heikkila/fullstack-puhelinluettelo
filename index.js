@@ -7,6 +7,7 @@ const app = express()
 app.use(express.json())
 app.use(cors())
 app.use(morgan('combined'))
+app.use(express.static('build'))
 
 let contacts = [
     {
@@ -55,6 +56,7 @@ app.get('/api/persons/:id', (req, res) => {
 
 // get all contacts
 app.get('/api/persons', (req, res) => {
+    console.log("trying to get all")
     res.json(contacts)
 })
 
