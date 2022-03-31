@@ -70,8 +70,6 @@ const App = () => {
   const [filterValue, setFilterValue] = useState('')
   const [errorMessage, setErrorMessage] = useState('')
 
-  const baseurl = 'http://localhost:3001/persons'
-
   useEffect(() => {
     contactservice
     .getAll()
@@ -131,7 +129,7 @@ const App = () => {
     setFilterValue(event.target.value)
   }
 
-  const contactsToShow = persons.filter(person => person.name.includes(filterValue))
+  //const contactsToShow = persons.filter(person => person.name.includes(filterValue))
 
   return (
     <div>
@@ -143,10 +141,9 @@ const App = () => {
       <PersonForm function={addName} name={newName} namehandler={handleNameChange} number={newNumber} numberhandler={handleNumberChange}/>
 
       <h2>Numbers</h2>
-      <Contacts contactsToShow={contactsToShow} removecontact={removeContact}/>
+      <Contacts contactsToShow={persons} removecontact={removeContact}/>
     </div>
   )
-
 }
 
 export default App

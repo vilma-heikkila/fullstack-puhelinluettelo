@@ -1,8 +1,11 @@
 const { application } = require('express')
+require('dotenv').config()
 const express = require('express')
 const morgan = require('morgan')
 const cors = require('cors')
 const app = express()
+
+const Contact = require('./models/contact')
 
 app.use(express.json())
 app.use(cors())
@@ -44,20 +47,16 @@ app.get('/info', (req, res) => {
   
 // get single contact
 app.get('/api/persons/:id', (req, res) => {
-    const id = Number(req.params.id)
-    const contact = contacts.find(contact => contact.id === id)
-
-    if (contact) {
+    Contact.findById(req.params.id).then(contact => {
         res.json(contact)
-    } else {
-        res.status(404).end()
-    }
+    })
 })
 
 // get all contacts
 app.get('/api/persons', (req, res) => {
-    console.log("trying to get all")
-    res.json(contacts)
+    Contact.find({}).then(contacts => {
+        res.json(contacts)
+    })
 })
 
 // delete contact
@@ -71,31 +70,30 @@ app.delete('/api/persons/:id', (request, response) => {
 // add new contact
 app.post('/api/persons', (request, response) => { 
     const body = request.body
-    const name = body.name
-    const number = body.number
-    const names = contacts.map(person => person.name)
+    const nname = body.name
+    const nnumber = body.number
+    //const names = contacts.map(person => person.name)
 
-    if (!name || !number) {
+    if (!nname || !nnumber) {
         return response.status(400).json({
             error: 'content missing'
         })
-    } else if (names.includes(name)) {
+    } /*else if (names.includes(nname)) {
         return response.status(400).json({
             error: 'name exists'
         })
-    }
+    }*/
 
-    const contact = {
-        id: Math.floor(Math.random()*100),
-        name: name,
-        number: number
-    }
-
-    contacts = contacts.concat(contact)
-    response.json(contact)
+    const contact = new Contact({
+        name: nname,
+        number: nnumber
+    })
+    contact.save().then(savedContact => {
+        response.json(savedContact)
+    })
 })
   
-const PORT = process.env.PORT || 3001
+const PORT = process.env.PORT
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`)
 })
